@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Specter AI — The Invisible AI Interview & Coding Copilot for macOS, Windows & Linux</title>
+  <meta name="description" content="Download Specter AI, the undetectable AI interview copilot for live calls, coding assessments and DSA. Real-time audio loopback transcription, screen analysis, and candidate resume tailoring across macOS, Windows and Linux.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" href="favicon.png" type="image/png">
+</head>
+<body>
+  <!-- Navigation Header -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="#" class="brand">
+        <div class="brand-mascot-orb">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ghost-svg"><path d="M9 10h.01M15 10h.01M12 2a8 8 0 0 0-8 8v12l3-3 2.5 2.5L12 19l2.5 2.5L17 19l3 3V10a8 8 0 0 0-8-8z"/></svg>
+        </div>
+        <span class="brand-title">Specter <span class="gradient-text">AI</span></span>
+      </a>
+
+      <nav class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#simulator">Live Demo</a>
+        <a href="#how-it-works">How It Works</a>
+        <a href="#shortcuts">Shortcuts</a>
+        <a href="#compare">Compare</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#download" class="btn btn-nav">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 4v12m-6-6l6 6 6-6M4 20h16"/></svg>
+          Download Free
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-glow"></div>
+    <div class="container hero-content">
+      <div class="badge-pill">
+        <span class="pulse-dot"></span>
+        <span>Version 4.4.0 — Native on macOS, Windows & Linux</span>
+      </div>
+
+      <h1 class="hero-headline">
+        The Invisible <span class="gradient-text">AI Interview Copilot</span><br>For Live Technical Calls.
+      </h1>
+
+      <p class="hero-subtitle">
+        Real-time audio loopback transcription, instant LeetCode & coding solutions, and answers tailored to your resume. Engineered with hardware display exclusion to stay <b>completely invisible to Zoom, Google Meet, Teams, and screen recordings</b>.
+      </p>
+
+      <div class="hero-cta-group">
+        <a href="#download" class="btn btn-primary btn-large">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 4v12m-6-6l6 6 6-6M4 20h16"/></svg>
+          Download for <span id="detected-os-name">macOS & Windows</span>
+        </a>
+        <a href="#simulator" class="btn btn-secondary btn-large">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          Try Live Simulator
+        </a>
+      </div>
+
+      <div class="hero-trust-bar">
+        <div class="trust-item">
+          <svg class="trust-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+          <span>100% Screen-Share Invisible</span>
+        </div>
+        <div class="trust-item">
+          <svg class="trust-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+          <span>Zero Cloud Telemetry (Keys Stay Local)</span>
+        </div>
+        <div class="trust-item">
+          <svg class="trust-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+          <span>Free Groq & Gemini BYOK Compatible</span>
+        </div>
+        <div class="trust-item">
+          <svg class="trust-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+          <span>Native Apple Silicon (M1–M4) + Windows 10/11</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Live Copilot Simulator -->
+  <section class="section" id="simulator">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Interactive Simulator</span>
+        <h2>Experience Real-Time Stealth Assistance</h2>
+        <p>Test how Specter AI listens to interviewer audio, analyzes code problems, and streams instant answers.</p>
+      </div>
+
+      <div class="simulator-wrapper">
+        <div class="sim-controls">
+          <span class="sim-label">Choose an Interview Scenario:</span>
+          <div class="sim-buttons">
+            <button class="btn btn-sim active" data-scenario="dsa">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+              LeetCode: Two Sum (DSA)
+            </button>
+            <button class="btn btn-sim" data-scenario="behavioral">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+              HR: Tell Me About Yourself
+            </button>
+            <button class="btn btn-sim" data-scenario="system">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+              System Design: URL Shortener
+            </button>
+            <button class="btn btn-sim" data-scenario="debugging">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              Debugging: Memory Leak
+            </button>
+          </div>
+        </div>
+
+        <div class="sim-mockup">
+          <div class="sim-header">
+            <div class="sim-brand">
+              <span class="sim-dot green"></span>
+              <span>SPECTER OVERLAY (Undetected on Call)</span>
+            </div>
+            <div class="sim-meta">
+              <span class="badge-tag">Groq Llama 3.3 70B (180ms)</span>
+              <span class="badge-tag green">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                Stealth: Active
+              </span>
+            </div>
+          </div>
+
+          <div class="sim-body">
+            <div class="sim-stream-bar">
+              <div class="sim-audio-label">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="icon-pulse"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="22"/></svg>
+                <span>Interviewer Audio Stream</span>
+                <span id="sim-spoken-status">Transcribed via Whisper</span>
+              </div>
+              <div class="waveform-anim">
+                <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+              </div>
+            </div>
+
+            <div class="sim-transcript-box">
+              <p id="sim-transcript-text">"Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target. You may not use the same element twice."</p>
+            </div>
+
+            <div class="sim-answer-card">
+              <div class="sim-answer-meta">
+                <span class="badge-dsa" id="sim-detected-type">Detected: DSA Problem</span>
+                <button class="btn-copy" id="sim-copy-btn">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+                  Copy Code
+                </button>
+              </div>
+              <div class="sim-answer-code" id="sim-answer-code">
+<pre><code id="sim-code-target"># Key Idea: Use a hash map to store complements in one pass.
+def twoSum(nums: list[int], target: int) -> list[int]:
+    seen = {}
+    for i, num in enumerate(nums):
+        complement = target - num
+        if complement in seen:
+            return [seen[complement], i]
+        seen[num] = i
+    return []
+
+# Time O(N) - Space O(N)</code></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Multi-Platform Download Hub -->
+  <section class="section section-dark" id="download">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Cross-Platform Builds</span>
+        <h2>Download Specter AI v4.4.0</h2>
+        <p>Available on all major desktop operating systems with native hardware acceleration.</p>
+      </div>
+
+      <div class="download-grid">
+        <!-- macOS Card -->
+        <div class="dl-card dl-featured">
+          <div class="dl-badge">Recommended for Mac</div>
+          <div class="dl-os-icon">
+            <!-- Vector Apple SVG -->
+            <svg width="36" height="36" viewBox="0 0 170 170" fill="currentColor">
+              <path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.75 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.35.13-9.16-1.9-14.42-6.08-3.7-3.08-7.71-7.94-12.04-14.59-6.08-9.4-10.74-20.15-13.98-32.25-3.24-12.1-4.86-23.41-4.86-33.94 0-14.37 3.52-26.24 10.56-35.61 7.04-9.37 16.14-14.19 27.31-14.46 5.3 0 11.28 1.48 17.93 4.45 6.65 2.97 10.82 4.51 12.51 4.62 1.58-.11 5.92-1.76 13.01-4.96 7.09-3.2 13.06-4.63 17.93-4.29 13.25.99 23.48 5.65 30.69 13.98-11.75 7.12-17.5 16.9-17.26 29.34.24 9.87 4.09 18.06 11.55 24.58 7.46 6.51 16.48 10.22 27.05 11.13-2.33 7.05-5.24 14.55-8.74 22.49zM119.22 31.84c0-7.22 2.65-13.98 7.95-20.28 5.3-6.3 11.89-10.37 19.77-12.21.24 1.13.36 2.15.36 3.07 0 7.33-2.73 14.28-8.2 20.85-5.46 6.57-12.07 10.45-19.88 11.64-.13-1.02-.2-2.04-.2-3.07z"/>
+            </svg>
+          </div>
+          <h3>macOS</h3>
+          <p class="dl-sub">macOS 12 Monterey or newer</p>
+          <ul class="dl-features">
+            <li>Native Apple Silicon (M1, M2, M3, M4)</li>
+            <li>Intel 64-bit universal binary</li>
+            <li>AppKit <code>NSWindowSharingNone</code> screen protection</li>
+          </ul>
+          <div class="dl-button-group">
+            <a href="https://github.com/WhoisMonesh/Specter-AI-Interview-Copilot/releases/download/v5.0.0/Specter-Copilot-4.4.0-arm64.dmg" class="btn btn-primary btn-block">Download for Apple Silicon (.dmg)</a>
+            <a href="https://github.com/WhoisMonesh/Specter-AI-Interview-Copilot/releases/download/v5.0.0/Specter-Copilot-4.4.0-x64.dmg" class="btn btn-outline btn-block">Download for Intel Mac (.dmg)</a>
+          </div>
+          <span class="dl-checksum">SHA-256: 8a4c01d9... verified</span>
+        </div>
+
+        <!-- Windows Card -->
+        <div class="dl-card">
+          <div class="dl-os-icon">
+            <!-- Vector Windows SVG -->
+            <svg width="36" height="36" viewBox="0 0 88 88" fill="currentColor">
+              <path d="M0 12.402l35.689-4.86.016 34.423-35.67.203zm35.67 33.529l.028 34.453L.028 75.48.016 45.728zm4.326-39.027L87.914 0v41.527l-47.918.375zm47.929 46.749L87.914 88l-47.89-6.755V46.071z"/>
+            </svg>
+          </div>
+          <h3>Windows</h3>
+          <p class="dl-sub">Windows 10 and 11 (64-bit)</p>
+          <ul class="dl-features">
+            <li>Zero-installer portable or setup exe</li>
+            <li>Direct Win32 <code>WDA_EXCLUDEFROMCAPTURE</code></li>
+            <li>WASAPI system loopback audio capture</li>
+          </ul>
+          <div class="dl-button-group">
+            <a href="https://github.com/WhoisMonesh/Specter-AI-Interview-Copilot/releases/download/v5.0.0/specter-4.4.0-setup.exe" class="btn btn-primary btn-block">Download Setup (.exe)</a>
+            <a href="https://github.com/WhoisMonesh/Specter-AI-Interview-Copilot/releases/download/v5.0.0/specter-4.4.0-portable.exe" class="btn btn-outline btn-block">Download Portable (.exe)</a>
+          </div>
+          <span class="dl-checksum">SHA-256: 1ce4c953... verified</span>
+        </div>
+
+        <!-- Linux Card -->
+        <div class="dl-card">
+          <div class="dl-os-icon">
+            <!-- Vector Linux / Terminal SVG -->
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/>
+            </svg>
+          </div>
+          <h3>Linux</h3>
+          <p class="dl-sub">Ubuntu, Debian, Fedora, Arch</p>
+          <ul class="dl-features">
+            <li>Universal AppImage with all dependencies</li>
+            <li>Native .deb package for Debian/Ubuntu</li>
+            <li>PulseAudio and PipeWire loopback</li>
+          </ul>
+          <div class="dl-button-group">
+            <a href="https://github.com/WhoisMonesh/Specter-AI-Interview-Copilot/releases/download/v5.0.0/Specter-Copilot-4.4.0.AppImage" class="btn btn-primary btn-block">Download AppImage</a>
+            <a href="https://github.com/WhoisMonesh/Specter-AI-Interview-Copilot/releases/download/v5.0.0/specter-copilot_4.4.0_amd64.deb" class="btn btn-outline btn-block">Download .deb</a>
+          </div>
+          <span class="dl-checksum">SHA-256: f4b192ea... verified</span>
+        </div>
+      </div>
+
+      <!-- Web Practice Sandbox Callout -->
+      <div class="web-sandbox-banner">
+        <div class="sandbox-text">
+          <h4>Don't want to install software right now?</h4>
+          <p>Practice in your browser using our Web Simulator sandbox with zero setup.</p>
+        </div>
+        <a href="#simulator" class="btn btn-secondary">Open Web Simulator →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Core Features with Vector SVG Icons -->
+  <section class="section" id="features">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Core Capabilities</span>
+        <h2>Engineered for Technical Mastery</h2>
+        <p>Everything you need to confidently clear technical rounds and coding tests.</p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon-wrapper">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+          </div>
+          <h3>Hardware Display Exclusion</h3>
+          <p>Excluded from OS capture APIs. On macOS, uses <code>NSWindow.SharingType.none</code>. On Windows, binds <code>WDA_EXCLUDEFROMCAPTURE</code> directly into graphics compositor.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-wrapper">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="22"/></svg>
+          </div>
+          <h3>Dual-Audio Loopback</h3>
+          <p>Captures interviewer voice directly from system speaker loopback without echo. Understands questions instantaneously as they finish speaking.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-wrapper">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7V5a2 2 0 0 1 2-2h2"/><path d="M17 3h2a2 2 0 0 1 2 2v2"/><path d="M21 17v2a2 2 0 0 1-2 2h-2"/><path d="M7 21H5a2 2 0 0 1-2-2v-2"/><rect width="10" height="8" x="7" y="8" rx="1"/></svg>
+          </div>
+          <h3>Draggable Region OCR</h3>
+          <p>Press <code>Ctrl+Alt+R</code> to draw a box around any coding problem, multiple choice question, or system diagram for sub-second multimodal analysis.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-wrapper">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="7.5" cy="15.5" r="5.5"/><path d="m21 2-9.6 9.6"/><path d="m15.5 7.5 3 3L22 7l-3-3"/></svg>
+          </div>
+          <h3>Seven AI Providers (BYOK)</h3>
+          <p>Connect your free Groq, Google Gemini 2.0 Flash, OpenAI, Claude 3.5 Sonnet, OpenRouter, NVIDIA NIM, or Grok keys. No mandatory cloud subscriptions.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-wrapper">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </div>
+          <h3>Candidate Profile Grounding</h3>
+          <p>Upload your resume to inject your actual projects, metrics, and experience into behavioral and HR questions using the STAR framework.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-wrapper">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          </div>
+          <h3>Sub-200ms Latency</h3>
+          <p>Powered by Groq's Llama 3.3 70B and Gemini 2.0 Flash engines for answers that appear almost before the interviewer stops talking.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Keyboard Shortcuts Guide -->
+  <section class="section section-dark" id="shortcuts">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Efficiency</span>
+        <h2>Silent Hotkeys at Your Fingertips</h2>
+        <p>Trigger actions silently without switching windows or looking away from your camera.</p>
+      </div>
+
+      <div class="table-wrapper">
+        <table class="shortcuts-table">
+          <thead>
+            <tr>
+              <th>Action</th>
+              <th>macOS Shortcut</th>
+              <th>Windows / Linux Shortcut</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>Show / Hide Overlay</b></td>
+              <td><kbd>⌘</kbd> + <kbd>⌥</kbd> + <kbd>H</kbd></td>
+              <td><kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>H</kbd></td>
+              <td>Instantly toggles window visibility</td>
+            </tr>
+            <tr>
+              <td><b>Fullscreen Screen Solve</b></td>
+              <td><kbd>⌘</kbd> + <kbd>⌥</kbd> + <kbd>S</kbd></td>
+              <td><kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>S</kbd></td>
+              <td>Captures whole screen and extracts code/problem</td>
+            </tr>
+            <tr>
+              <td><b>Select Region Solve</b></td>
+              <td><kbd>⌘</kbd> + <kbd>⌥</kbd> + <kbd>R</kbd></td>
+              <td><kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>R</kbd></td>
+              <td>Draw box around problem statement or MCQ</td>
+            </tr>
+            <tr>
+              <td><b>Toggle Live Audio</b></td>
+              <td><kbd>⌘</kbd> + <kbd>⌥</kbd> + <kbd>L</kbd></td>
+              <td><kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>L</kbd></td>
+              <td>Pauses or resumes live transcription stream</td>
+            </tr>
+            <tr>
+              <td><b>Clear Answer</b></td>
+              <td><kbd>⌘</kbd> + <kbd>⌥</kbd> + <kbd>C</kbd></td>
+              <td><kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>C</kbd></td>
+              <td>Clears current answer ready for next question</td>
+            </tr>
+            <tr>
+              <td><b>Click-Through Mode</b></td>
+              <td><kbd>⌘</kbd> + <kbd>⌥</kbd> + <kbd>P</kbd></td>
+              <td><kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>P</kbd></td>
+              <td>Clicks pass directly through the window</td>
+            </tr>
+            <tr>
+              <td><b>Mute Microphone</b></td>
+              <td><kbd>⌘</kbd> + <kbd>⌥</kbd> + <kbd>M</kbd></td>
+              <td><kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>M</kbd></td>
+              <td>Temporarily ignores your own speaking</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Competitor Comparison -->
+  <section class="section" id="compare">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Honest Comparison</span>
+        <h2>How Specter AI Compares</h2>
+        <p>Why thousands of developers choose Specter over overpriced alternatives.</p>
+      </div>
+
+      <div class="table-wrapper">
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th class="col-highlight">Specter AI</th>
+              <th>LockedIn AI</th>
+              <th>Parakeet AI</th>
+              <th>Final Round AI</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>macOS Support (M1-M4)</b></td>
+              <td class="col-highlight"><span class="check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Yes (Native)</span></td>
+              <td><span class="cross"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Limited</span></td>
+              <td><span class="cross"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Web Only</span></td>
+              <td><span class="cross"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Web Only</span></td>
+            </tr>
+            <tr>
+              <td><b>Windows 10 & 11</b></td>
+              <td class="col-highlight"><span class="check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Yes</span></td>
+              <td><span class="check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Yes</span></td>
+              <td><span class="check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Yes</span></td>
+              <td><span class="cross"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Web Only</span></td>
+            </tr>
+            <tr>
+              <td><b>Linux Support</b></td>
+              <td class="col-highlight"><span class="check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Yes</span></td>
+              <td><span class="cross"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> No</span></td>
+              <td><span class="cross"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> No</span></td>
+              <td><span class="cross"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> No</span></td>
+            </tr>
+            <tr>
+              <td><b>Bring-Your-Own-Key (Free AI)</b></td>
+              <td class="col-highlight"><span class="check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Yes (Groq/Gemini Free)</span></td>
+              <td><span class="cross"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> No</span></td>
+              <td><span class="cross"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> No</span></td>
+              <td><span class="cross"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> No</span></td>
+            </tr>
+            <tr>
+              <td><b>Zero Telemetry / Local Sealed</b></td>
+              <td class="col-highlight"><span class="check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Yes (On-Device)</span></td>
+              <td><span class="cross"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Cloud Logs</span></td>
+              <td><span class="cross"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Cloud Logs</span></td>
+              <td><span class="cross"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Cloud Logs</span></td>
+            </tr>
+            <tr>
+              <td><b>Monthly Cost</b></td>
+              <td class="col-highlight"><b>$0 (BYOK) or $19 once</b></td>
+              <td>$79 / month</td>
+              <td>$69 / month</td>
+              <td>$149 / month</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section class="section section-dark" id="pricing">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Fair & Transparent</span>
+        <h2>Choose Your Plan</h2>
+        <p>No predatory subscriptions. No hidden usage fees.</p>
+      </div>
+
+      <div class="pricing-grid">
+        <div class="price-card">
+          <div class="price-header">
+            <h3>Community / BYOK</h3>
+            <p>Free forever with your own API keys</p>
+            <div class="price-val">$0 <span>/ month</span></div>
+          </div>
+          <ul class="price-features">
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#00e676" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Full access to desktop app on macOS, Windows & Linux</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#00e676" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Real-time audio loopback transcription</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#00e676" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Fullscreen & Region screen analysis</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#00e676" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> BYOK support (Groq, Gemini, OpenAI, Claude, etc.)</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#00e676" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Resume profile & STAR answer mode</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#00e676" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> 100% on-device privacy</li>
+          </ul>
+          <a href="#download" class="btn btn-outline btn-block">Download Free</a>
+        </div>
+
+        <div class="price-card price-highlight">
+          <div class="price-badge">Most Popular</div>
+          <div class="price-header">
+            <h3>Pro Pass</h3>
+            <p>Complete peace of mind for active interview seasons</p>
+            <div class="price-val">$19 <span>/ one-time</span></div>
+          </div>
+          <ul class="price-features">
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#00e676" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Everything in Community / BYOK</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#00e676" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Included high-speed cloud fallback keys (no setup required)</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#00e676" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Priority technical support & interview mock consultations</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#00e676" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Unlimited sessions on up to 3 personal devices</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#00e676" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Lifetime software updates</li>
+          </ul>
+          <a href="#download" class="btn btn-primary btn-block">Get Pro Pass</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div class="footer-brand">
+        <div class="brand">
+          <div class="brand-mascot-orb small">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ghost-svg"><path d="M9 10h.01M15 10h.01M12 2a8 8 0 0 0-8 8v12l3-3 2.5 2.5L12 19l2.5 2.5L17 19l3 3V10a8 8 0 0 0-8-8z"/></svg>
+          </div>
+          <span class="brand-title">Specter <span class="gradient-text">AI</span></span>
+        </div>
+        <p class="footer-blurb">The stealth, privacy-first technical interview copilot for engineers and freshers. Available for macOS, Windows, and Linux.</p>
+      </div>
+
+      <div class="footer-links-group">
+        <h4>Product</h4>
+        <a href="#features">Features</a>
+        <a href="#simulator">Simulator</a>
+        <a href="#download">Downloads</a>
+        <a href="#shortcuts">Keyboard Shortcuts</a>
+      </div>
+
+      <div class="footer-links-group">
+        <h4>Legal & Privacy</h4>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Security Guarantee</a>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <p>© 2026 Specter AI. All rights reserved. Intended strictly for interview practice, skills assessment, and educational preparation.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
