@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Specter Region Selector</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      user-select: none;
+    }
+    body, html {
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      background: rgba(0, 0, 0, 0.25);
+      cursor: crosshair;
+    }
+    .hint-banner {
+      position: absolute;
+      top: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(13, 13, 18, 0.9);
+      border: 1px solid rgba(0, 242, 254, 0.5);
+      color: #00f2fe;
+      padding: 10px 20px;
+      border-radius: 99px;
+      font-size: 13px;
+      font-weight: 600;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+      pointer-events: none;
+      z-index: 9999;
+    }
+    #selection-box {
+      position: absolute;
+      border: 2px dashed #00f2fe;
+      background: rgba(0, 242, 254, 0.1);
+      display: none;
+      box-shadow: 0 0 15px rgba(0, 242, 254, 0.4);
+      z-index: 100;
+    }
+  </style>
+</head>
+<body>
+  <div class="hint-banner">
+    📐 Drag a box around the interview question or code (Press ESC to cancel)
+  </div>
+  <div id="selection-box"></div>
+
+  <script>
+    const box = document.getElementById('selection-box');
+    let startX = 0, startY = 0;
+    let isDragging = false;
+
+    window.addEventListener('mousedown', (e) => {
+      startX = e.clientX;
+      startY = e.clientY;
+      isDragging = true;
+      box.style.left = startX + 'px';
+      box.style.top = startY + 'px';
+      box.style.width = '0px';
+      box.style.height = '0px';
+      box.style.display = 'block';
+    });
+
+    window.addEventListener('mousemove', (e) => {
+      if (!isDragging) return;
+      const curX = e.clientX;
+      const curY = e.clientY;
+
+      const left = Math.min(startX, curX);
+      const top = Math.min(startY, curY);
+      const width = Math.abs(curX - startX);
+      const height = Math.abs(curY - startY);
+
+      box.style.left = left + 'px';
+      box.style.top = top + 'px';
+      box.style.width = width + 'px';
+      box.style.height = height + 'px';
+    });
+
+    window.addEventListener('mouseup', async (e) => {
+      if (!isDragging) return;
+      isDragging = false;
+
+      const curX = e.clientX;
+      const curY = e.clientY;
+
+      const left = Math.min(startX, curX);
+      const top = Math.min(startY, curY);
+      const width = Math.abs(curX - startX);
+      const height = Math.abs(curY - startY);
+
+      if (width > 20 && height > 20) {
+        if (window.specter) {
+          const fn = window.specter.sendRegionSelected || window.specter.regionSend;
+          if (typeof fn === 'function') {
+            await fn({
+              x: left,
+              y: top,
+              width: width,
+              height: height
+            });
+          }
+        }
+      } else {
+        box.style.display = 'none';
+      }
+    });
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        if (window.specter) {
+          const fn = window.specter.cancelRegion || window.specter.regionCancel;
+          if (typeof fn === 'function') fn();
+        }
+      }
+    });
+  </script>
+</body>
+</html>

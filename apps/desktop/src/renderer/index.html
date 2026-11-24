@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Specter AI Copilot</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="favicon.png" type="image/png">
+</head>
+<body class="theme-obsidian">
+  <div class="overlay-container" id="app">
+
+    <!-- ── Floating Header ── -->
+    <header class="drag-bar">
+      <div class="brand" id="brand-container">
+        <div class="ghost-orb pulse" id="brand-icon"></div>
+        <span class="brand-name" id="brand-name">SPECTER <span class="badge-ai">AI</span></span>
+      </div>
+      <div class="header-status">
+        <span class="status-pill" id="status-pill">● Ready</span>
+        <span class="tier-pill" id="tier-pill">BYOK</span>
+        <span class="user-pill" id="user-pill">Guest</span>
+      </div>
+      <div class="header-actions no-drag">
+        <button class="icon-btn" id="btn-disguise" title="Camouflage / Disguise App (Hide Name & Icon — Locked AI Mode)">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
+        </button>
+        <button class="icon-btn" id="btn-glance" title="Glance Mode">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+        </button>
+        <button class="icon-btn" id="btn-clickthrough" title="Click-through Mode">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 3 7.07 16.97 2.51-7.39 7.39-2.51L3 3z"/><path d="m13 13 6 6"/></svg>
+        </button>
+        <button class="icon-btn" id="btn-settings-tab" title="Settings">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        </button>
+        <button class="icon-btn btn-danger" id="btn-close" title="Hide (Ctrl+Alt+H)">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+        <button class="icon-btn btn-danger" id="btn-quit" title="Quit Specter AI Completely">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M18.36 6.64a9 9 0 1 1-12.73 0"/><line x1="12" y1="2" x2="12" y2="12"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- ── Tabs ── -->
+    <nav class="nav-tabs no-drag">
+      <button class="tab-btn active no-drag" data-tab="copilot">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        Copilot
+      </button>
+      <button class="tab-btn no-drag" data-tab="screen">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><polyline points="8 21 12 17 16 21"/></svg>
+        Screen
+      </button>
+      <button class="tab-btn no-drag" data-tab="account">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        Account
+      </button>
+      <button class="tab-btn no-drag" data-tab="profile">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        Resume
+      </button>
+      <button class="tab-btn no-drag" data-tab="settings">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+        BYOK
+      </button>
+    </nav>
+
+    <!-- ── Main Content ── -->
+    <main class="tab-panels">
+
+      <!-- ── TAB 0: COPILOT ── -->
+      <section class="tab-content active" id="tab-copilot">
+        <!-- Provider tag -->
+        <div class="provider-row">
+          <span class="provider-tag" id="active-provider-tag">⚡ BYOM / BYOK</span>
+          <span class="detected-type" id="detected-type">Listening…</span>
+        </div>
+
+        <!-- Live transcript -->
+        <div class="transcript-box">
+          <div class="transcript-header">
+            <span class="transcript-label">
+              🎙 Live Transcript
+              <span class="audio-meter-wrap" title="Live Audio Input Level">
+                <span class="audio-meter-bar"><span class="audio-meter-fill" id="audio-meter-fill"></span></span>
+              </span>
+            </span>
+            <div class="transcript-controls no-drag">
+              <button class="icon-btn-sm" id="btn-toggle-listen" title="Pause / Resume listening">
+                <span id="listen-btn-text">Pause</span>
+              </button>
+              <button class="icon-btn-sm" id="btn-stop-listen" title="Stop audio stream">⏹</button>
+              <button class="icon-btn-sm" id="btn-mute" title="Mute mic">🎙</button>
+              <button class="icon-btn-sm" id="btn-clear-transcript" title="Clear">✕</button>
+            </div>
+          </div>
+          <div class="transcript-text" id="live-transcript">
+            <span class="placeholder-text">Start speaking — Specter listens to your interview in real time…</span>
+          </div>
+        </div>
+
+        <!-- Quick action chips -->
+        <div class="chip-row no-drag" id="chip-row">
+          <button class="chip" data-prompt="solve-code">💻 Code</button>
+          <button class="chip" data-prompt="solve-sql">🗄 SQL</button>
+          <button class="chip" data-prompt="solve-system">🏗 System Design</button>
+          <button class="chip" data-prompt="solve-behavioral">🧠 Behavioral</button>
+          <button class="chip" data-prompt="solve-mcq">✅ MCQ</button>
+          <button class="chip" data-prompt="solve-math">📐 Math</button>
+          <button class="chip" data-prompt="explain-code">🔍 Explain</button>
+          <button class="chip" data-prompt="debug-code">🐛 Debug</button>
+        </div>
+
+        <!-- Chat input -->
+        <div class="chat-row no-drag">
+          <textarea class="chat-input" id="chat-input" rows="2" placeholder="Ask anything or paste a question…"></textarea>
+          <button class="btn-send" id="btn-chat-send" title="Send (Enter)">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          </button>
+        </div>
+
+        <!-- Solve button -->
+        <div class="solve-row no-drag">
+          <button class="btn btn-solve" id="btn-solve">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            Solve (⌘↩)
+          </button>
+          <button class="btn btn-secondary" id="btn-capture-solve">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/></svg>
+            Capture
+          </button>
+          <button class="btn btn-secondary" id="btn-new">New</button>
+        </div>
+
+        <!-- Answer panel -->
+        <div class="answer-panel" id="answer-panel">
+          <div class="answer-header">
+            <span class="answer-label">💡 Answer</span>
+            <div class="answer-actions no-drag">
+              <button class="icon-btn-sm" id="btn-copy-code" title="Copy answer">📋 Copy</button>
+              <button class="icon-btn-sm" id="btn-next-question" title="Next">→</button>
+            </div>
+          </div>
+          <div class="answer-content" id="answer-content">
+            <span class="placeholder-text">Your AI-generated answer will appear here…</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── TAB 1: SCREEN ── -->
+      <section class="tab-content" id="tab-screen">
+        <div class="card">
+          <h3>Screen &amp; Window Capture</h3>
+          <p class="card-desc">Capture any monitor or application window, then run on-device Tesseract OCR + AI solve.</p>
+
+          <div class="form-group" style="margin-bottom:10px">
+            <label style="font-size:11px">Capture Target (Monitor / Window)</label>
+            <div style="display:flex;gap:6px" class="no-drag">
+              <select id="screen-source-select" style="flex:1">
+                <option value="">Active Display (Auto)</option>
+              </select>
+              <button class="btn btn-secondary" id="btn-refresh-sources" title="Refresh displays and windows" style="padding:6px 10px">↻</button>
+            </div>
+          </div>
+
+          <div class="capture-preview" id="capture-preview">
+            <span class="placeholder-text">No screenshot yet. Click "Capture Screen" or select a region.</span>
+          </div>
+
+          <div class="btn-group no-drag" style="gap:8px;display:flex;flex-wrap:wrap;margin-top:12px">
+            <button class="btn btn-primary" id="btn-capture-full">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/></svg>
+              Capture Screen
+            </button>
+            <button class="btn btn-secondary" id="btn-capture-region">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/></svg>
+              Select Region
+            </button>
+            <button class="btn btn-primary" id="btn-ocr-solve">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+              OCR + Solve
+            </button>
+          </div>
+
+          <div class="form-group" style="margin-top:12px">
+            <label>Extracted Text (editable)</label>
+            <textarea id="ocr-text" rows="4" placeholder="OCR extracted text will appear here…"></textarea>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── TAB 2: ACCOUNT ── -->
+      <section class="tab-content" id="tab-account">
+        <div class="card">
+
+          <!-- Logged OUT state -->
+          <div id="account-signed-out">
+            <h3>Sign In to Specter AI</h3>
+            <p class="card-desc">Sign in with Firebase OAuth to sync your history, custom prompts, and subscription across devices.</p>
+            <button class="btn btn-primary no-drag" id="btn-sign-in" style="width:100%;margin-top:12px">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
+              Continue with Firebase OAuth (Google)
+            </button>
+            <p class="auth-hint" id="auth-hint"></p>
+            <div class="divider-text" style="margin:16px 0">— or use as guest —</div>
+            <p class="card-desc">Guest mode: 15 free questions per session, settings not synced.</p>
+          </div>
+
+          <!-- Logged IN state -->
+          <div id="account-signed-in" style="display:none">
+            <div class="user-card">
+              <div class="avatar-circle" id="user-avatar">👤</div>
+              <div class="user-info">
+                <div class="user-name" id="user-name-display">—</div>
+                <div class="user-email" id="user-email-display">—</div>
+              </div>
+            </div>
+
+            <div class="form-group" style="margin-top:16px">
+              <label>Account Mode</label>
+              <div class="plan-inline" id="account-plan-display">⚡ BYOM / Unlocked</div>
+            </div>
+
+            <button class="btn btn-secondary no-drag" id="btn-sign-out" style="width:100%;margin-top:12px">Sign Out</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── TAB 4: RESUME / PROFILE ── -->
+      <section class="tab-content" id="tab-profile">
+        <div class="card">
+          <h3>Candidate Profile</h3>
+          <p class="card-desc">Personalise behavioral, HR and "Tell me about yourself" answers with your real background.</p>
+
+          <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" id="prof-name" placeholder="e.g. Alex Morgan"/>
+          </div>
+          <div class="form-group">
+            <label>Target Role</label>
+            <input type="text" id="prof-role" placeholder="e.g. Senior Full Stack Engineer"/>
+          </div>
+          <div class="form-group">
+            <label>Years of Experience</label>
+            <input type="number" id="prof-exp" value="3" min="0" max="30"/>
+          </div>
+          <div class="form-group">
+            <label>Key Skills (comma-separated)</label>
+            <input type="text" id="prof-skills" placeholder="React, Node.js, Python, AWS, Docker"/>
+          </div>
+          <div class="form-group">
+            <label>Resume / Talking Points</label>
+            <textarea id="prof-resume" rows="5" placeholder="Paste projects, metrics, work history…"></textarea>
+          </div>
+
+          <button class="btn btn-primary no-drag" id="btn-save-profile" style="width:100%">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+            Save Profile
+          </button>
+          <p class="save-msg" id="profile-save-msg"></p>
+        </div>
+      </section>
+
+      <!-- ── TAB 5: BYOK / SETTINGS ── -->
+      <section class="tab-content" id="tab-settings">
+        <div class="card">
+          <h3>AI Provider &amp; Keys</h3>
+          <p class="card-desc">Keys are encrypted locally — never uploaded. Free Groq and Gemini keys work without a subscription.</p>
+
+          <div class="form-group">
+            <label>Inference Provider (BYOM / BYOK)</label>
+            <select id="setting-active-provider" class="no-drag">
+              <option value="gemini" selected>Google Gemini (gemini-2.5-flash / Pro) [Free Available]</option>
+              <option value="groq">Groq (llama-3.3-70b-specdec) [Ultra-Fast &amp; Free]</option>
+              <option value="openai">OpenAI (GPT-4o / GPT-4o-mini / o1)</option>
+              <option value="anthropic">Anthropic Claude (Claude 3.5 Sonnet)</option>
+              <option value="openrouter">OpenRouter (DeepSeek R1 / LLaMA 3.3)</option>
+              <option value="nvidia">NVIDIA AI (LLaMA 3.1 70B)</option>
+            </select>
+          </div>
+
+          <div class="key-fields">
+            <div class="form-group">
+              <label>Groq API Key <span class="tag-free">Free Tier</span></label>
+              <div class="key-row no-drag">
+                <input type="password" id="key-groq" placeholder="gsk_…" autocomplete="off"/>
+                <button class="btn-test" data-provider="groq">Test</button>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Google Gemini API Key <span class="tag-free">Free Tier</span></label>
+              <div class="key-row no-drag">
+                <input type="password" id="key-gemini" placeholder="AIzaSy…" autocomplete="off"/>
+                <button class="btn-test" data-provider="gemini">Test</button>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>OpenAI API Key</label>
+              <div class="key-row no-drag">
+                <input type="password" id="key-openai" placeholder="sk-proj-…" autocomplete="off"/>
+                <button class="btn-test" data-provider="openai">Test</button>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Anthropic Claude API Key</label>
+              <div class="key-row no-drag">
+                <input type="password" id="key-anthropic" placeholder="sk-ant-…" autocomplete="off"/>
+                <button class="btn-test" data-provider="anthropic">Test</button>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>OpenRouter API Key</label>
+              <div class="key-row no-drag">
+                <input type="password" id="key-openrouter" placeholder="sk-or-…" autocomplete="off"/>
+                <button class="btn-test" data-provider="openrouter">Test</button>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Deepgram API Key <span class="tag-free">Real-time STT</span></label>
+              <div class="key-row no-drag">
+                <input type="password" id="key-deepgram" placeholder="dg-…" autocomplete="off"/>
+                <button class="btn-test" data-provider="deepgram">Test</button>
+              </div>
+            </div>
+          </div>
+
+          <p class="key-test-result" id="key-test-result"></p>
+
+          <div class="slider-group">
+            <label>Window Transparency (<span id="opacity-val">90%</span>)</label>
+            <input type="range" id="slider-opacity" min="20" max="100" value="90" class="no-drag"/>
+          </div>
+
+          <div class="toggle-row">
+            <label>Stealth Mode (hide from screen capture)</label>
+            <label class="toggle-switch">
+              <input type="checkbox" id="toggle-stealth" checked/>
+              <span class="toggle-track"></span>
+            </label>
+          </div>
+
+          <!-- ── App Disguise & Icon Stealth (Locked AI Mode) ── -->
+          <div class="card" style="margin-top:10px;border-color:rgba(124,92,252,0.3);background:rgba(124,92,252,0.03)">
+            <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px">
+              <span style="font-size:14px">🎭</span>
+              <h3 style="margin:0;font-size:12px;font-weight:700">App Disguise &amp; Icon Stealth (Locked AI Mode)</h3>
+            </div>
+            <p class="card-desc" style="font-size:11px;margin-bottom:10px">Camouflage the app title, process name, and completely hide the app icon from the macOS Dock and Windows Taskbar for 100% stealth during interviews.</p>
+
+            <div class="toggle-row">
+              <label style="font-size:11.5px">Hide App from Dock &amp; Taskbar</label>
+              <label class="toggle-switch">
+                <input type="checkbox" id="toggle-hide-icon" checked/>
+                <span class="toggle-track"></span>
+              </label>
+            </div>
+
+            <div class="toggle-row" style="margin-top:8px">
+              <label style="font-size:11.5px">Camouflage App Name &amp; Title</label>
+              <label class="toggle-switch">
+                <input type="checkbox" id="toggle-disguise"/>
+                <span class="toggle-track"></span>
+              </label>
+            </div>
+
+            <div class="form-group" id="disguise-preset-group" style="margin-top:10px">
+              <label style="font-size:11px">Camouflage Persona</label>
+              <select id="setting-disguise-preset" class="no-drag">
+                <option value="notes">📝 Notes (System Notes)</option>
+                <option value="calculator">🧮 Calculator (Math Utility)</option>
+                <option value="blank">🕶 Invisible / Blank (No Name or Icon)</option>
+                <option value="terminal">⚡ Terminal Monitor</option>
+                <option value="chrome">🌐 Google Chrome Helper</option>
+                <option value="zoom">🔊 Zoom Audio Device</option>
+                <option value="custom">✏ Custom Disguise Name…</option>
+              </select>
+            </div>
+
+            <div class="form-group" id="disguise-custom-group" style="display:none;margin-top:8px">
+              <label style="font-size:11px">Custom Disguise Name</label>
+              <input type="text" id="setting-disguise-custom" placeholder="e.g. Activity Monitor" maxlength="30" class="no-drag"/>
+            </div>
+          </div>
+
+          <div class="form-group" style="margin-top:12px">
+            <label>Audio Capture Mode</label>
+            <select id="setting-audio-mode" class="no-drag">
+              <option value="both" selected>Dual-Channel (Mic + System Audio Loopback)</option>
+              <option value="system">System Audio Only (Interviewer Voice)</option>
+              <option value="mic">Microphone Only</option>
+            </select>
+          </div>
+
+          <div class="form-group" style="margin-top:8px">
+            <label>Microphone Device</label>
+            <select id="setting-mic-device" class="no-drag">
+              <option value="">Default System Microphone</option>
+            </select>
+          </div>
+
+          <div class="form-group" style="margin-top:8px">
+            <label>Language Hint (for speech recognition)</label>
+            <select id="setting-language" class="no-drag">
+              <option value="en">English</option>
+              <option value="es">Spanish</option>
+              <option value="fr">French</option>
+              <option value="de">German</option>
+              <option value="zh">Chinese</option>
+              <option value="hi">Hindi</option>
+              <option value="ja">Japanese</option>
+            </select>
+          </div>
+
+          <!-- ── macOS Permissions & Diagnostics ── -->
+          <div class="card" style="margin-top:12px;border-color:rgba(56,189,248,0.28);background:rgba(56,189,248,0.03)">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
+              <span style="font-size:12px;font-weight:700">🛡 System Permissions &amp; Diagnostics</span>
+              <button class="btn-xs no-drag" id="btn-refresh-perms">Refresh</button>
+            </div>
+            <div class="perm-row">
+              <span>Screen Recording (Capture &amp; System Audio)</span>
+              <div style="display:flex;align-items:center;gap:6px" class="no-drag">
+                <span class="perm-badge pending" id="perm-screen-badge">Checking…</span>
+                <button class="btn-xs" id="btn-grant-screen">Grant</button>
+              </div>
+            </div>
+            <div class="perm-row">
+              <span>Microphone Access</span>
+              <div style="display:flex;align-items:center;gap:6px" class="no-drag">
+                <span class="perm-badge pending" id="perm-mic-badge">Checking…</span>
+                <button class="btn-xs" id="btn-grant-mic">Grant</button>
+              </div>
+            </div>
+          </div>
+
+          <button class="btn btn-primary no-drag" id="btn-save-keys" style="width:100%;margin-top:14px">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="7.5" cy="15.5" r="5.5"/><path d="m21 2-9.6 9.6"/><path d="m15.5 7.5 3 3L22 7l-3-3"/></svg>
+            Save Keys &amp; Settings
+          </button>
+          <p class="save-msg" id="keys-save-msg"></p>
+        </div>
+
+        <!-- Shortcut info -->
+        <div class="card" style="margin-top:8px">
+          <h3>Keyboard Shortcuts</h3>
+          <div class="shortcut-list">
+            <div class="shortcut-row"><kbd>⌘↩</kbd> Solve (AI answer)</div>
+            <div class="shortcut-row"><kbd>⌘⇧↩</kbd> Capture &amp; Solve</div>
+            <div class="shortcut-row"><kbd>⌘⌥H</kbd> Toggle visibility</div>
+            <div class="shortcut-row"><kbd>⌘⌥L</kbd> Toggle listen</div>
+            <div class="shortcut-row"><kbd>⌘⌥M</kbd> Mute mic</div>
+            <div class="shortcut-row"><kbd>⌘⌥C</kbd> Clear panel</div>
+            <div class="shortcut-row"><kbd>⌘⌥A</kbd> Copy answer</div>
+            <div class="shortcut-row"><kbd>⌘←↑↓→</kbd> Move window</div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- ── Footer ── -->
+    <footer class="app-footer">
+      <div class="stealth-status">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#00e676" stroke-width="3"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <span class="stealth-text" id="stealth-status-text">Stealth Active</span>
+      </div>
+      <div class="footer-right">
+        <span class="version-tag" id="version-tag">v5.0</span>
+      </div>
+    </footer>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

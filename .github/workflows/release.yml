@@ -1,0 +1,154 @@
+name: Release Multi-Platform App & Deploy GitHub Pages
+
+on:
+  push:
+    tags:
+      - 'v*'
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # Job 1: Build Desktop Copilot for macOS, Windows, Linux
+  build-binaries:
+    name: Build (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-latest, windows-latest, ubuntu-latest]
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+          cache-dependency-path: 'apps/desktop/package.json'
+
+      - name: Install Dependencies
+        run: |
+          cd apps/desktop
+          npm install
+
+      - name: Compile & Build Application
+        run: |
+          cd apps/desktop
+          npm run build
+
+      - name: Build macOS Artifacts (.dmg, .zip)
+        if: matrix.os == 'macos-latest'
+        run: |
+          cd apps/desktop
+          if [ -z "$CSC_LINK" ]; then
+            unset CSC_LINK CSC_KEY_PASSWORD APPLE_ID APPLE_APP_SPECIFIC_PASSWORD APPLE_TEAM_ID
+          fi
+          npx electron-builder --mac --publish never
+        env:
+          CSC_LINK: ${{ secrets.CSC_LINK }}
+          CSC_KEY_PASSWORD: ${{ secrets.CSC_KEY_PASSWORD }}
+          APPLE_ID: ${{ secrets.APPLE_ID }}
+          APPLE_APP_SPECIFIC_PASSWORD: ${{ secrets.APPLE_APP_SPECIFIC_PASSWORD }}
+          APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+
+      - name: Prepare Windows Signing Certificate
+        if: matrix.os == 'windows-latest'
+        shell: pwsh
+        run: |
+          if (-not $env:CSC_LINK) {
+            $cert = New-SelfSignedCertificate -Type CodeSigningCert -Subject "CN=Specter AI Copilot, O=WhoisMonesh" -CertStoreLocation "Cert:\CurrentUser\My" -NotAfter (Get-Date).AddYears(3)
+            $pwd = ConvertTo-SecureString -String "SpecterSign2026!" -Force -AsPlainText
+            $pfxPath = "$env:RUNNER_TEMP\specter-win-cert.pfx"
+            Export-PfxCertificate -Cert $cert -FilePath $pfxPath -Password $pwd | Out-Null
+            "CSC_LINK=$pfxPath" | Out-File -FilePath $env:GITHUB_ENV -Append
+            "CSC_KEY_PASSWORD=SpecterSign2026!" | Out-File -FilePath $env:GITHUB_ENV -Append
+            Write-Host "Generated Authenticode signing PFX at $pfxPath"
+          }
+        env:
+          CSC_LINK: ${{ secrets.WIN_CSC_LINK || secrets.CSC_LINK }}
+
+      - name: Build Windows Artifacts (.exe setup & portable)
+        if: matrix.os == 'windows-latest'
+        run: |
+          cd apps/desktop
+          npx electron-builder --win --publish never
+
+      - name: Build Linux Artifacts (.AppImage, .deb)
+        if: matrix.os == 'ubuntu-latest'
+        run: |
+          cd apps/desktop
+          npx electron-builder --linux --publish never
+
+      - name: Upload Build Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: binaries-${{ matrix.os }}
+          path: apps/desktop/release/*.*
+          if-no-files-found: warn
+
+      - name: Attach Binaries to GitHub Release
+        if: startsWith(github.ref, 'refs/tags/v')
+        shell: bash
+        run: |
+          cd apps/desktop/release
+          for f in *; do
+            case "$f" in
+              Specter.AI.Copilot*|specter-ai-copilot*) ;;
+              *arm64*.dmg) mv -f "$f" "Specter.AI.Copilot-5.0.0-arm64.dmg" 2>/dev/null || true ;;
+              *.dmg) mv -f "$f" "Specter.AI.Copilot-5.0.0.dmg" 2>/dev/null || true ;;
+              *Setup*.exe) mv -f "$f" "Specter.AI.Copilot.Setup.5.0.0.exe" 2>/dev/null || true ;;
+              *.exe) mv -f "$f" "Specter.AI.Copilot.5.0.0.exe" 2>/dev/null || true ;;
+              *.AppImage) mv -f "$f" "Specter.AI.Copilot-5.0.0.AppImage" 2>/dev/null || true ;;
+            esac
+          done
+          for f in Specter.AI.Copilot*.dmg Specter.AI.Copilot*.exe Specter.AI.Copilot*.AppImage specter-ai-copilot*.deb; do
+            if [ -f "$f" ]; then
+              echo "Uploading $f to release ${{ github.ref_name }}..."
+              gh release upload "${{ github.ref_name }}" "$f" --clobber
+            fi
+          done
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  # Job 2: Deploy Landing Page to GitHub Pages
+  deploy-pages:
+    name: Deploy GitHub Pages
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./apps/gh-pages
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
+
+  # Job 3: Generate & Publish SHA-256 Checksums for All Release Packages
+  publish-checksums:
+    name: Publish SHA256SUMS.txt
+    needs: build-binaries
+    if: startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Generate and Upload SHA256SUMS.txt
+        run: |
+          gh release view "${{ github.ref_name }}" -R "${{ github.repository }}" --json assets -q '.assets[] | select(.name != "SHA256SUMS.txt") | "\(.digest | sub("sha256:"; ""))  \(.name)"' > SHA256SUMS.txt
+          cat SHA256SUMS.txt
+          gh release upload "${{ github.ref_name }}" -R "${{ github.repository }}" SHA256SUMS.txt --clobber
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

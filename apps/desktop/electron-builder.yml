@@ -1,0 +1,75 @@
+appId: in.specter.copilot
+productName: Specter AI Copilot
+directories:
+  output: release
+  buildResources: resources
+
+afterPack: scripts/afterPack.js
+
+publish:
+  provider: github
+  owner: WhoisMonesh
+  repo: Specter-AI-Interview-Copilot
+  releaseType: release
+
+files:
+  - dist/**/*
+  - resources/**/*
+  - package.json
+
+mac:
+  category: public.app-category.developer-tools
+  target:
+    - target: dmg
+      arch:
+        - arm64
+        - x64
+    - target: zip
+      arch:
+        - arm64
+        - x64
+  hardenedRuntime: false
+  gatekeeperAssess: false
+  entitlements: resources/entitlements.mac.plist
+  entitlementsInherit: resources/entitlements.mac.plist
+  icon: resources/icon.png
+  extendInfo:
+    NSMicrophoneUsageDescription: "Specter AI needs microphone access to transcribe your interview conversation in real time."
+    NSScreenCaptureUsageDescription: "Specter AI needs screen recording access to capture coding problems and system audio for live transcription."
+    NSAudioCaptureUsageDescription: "Specter AI needs system audio access to transcribe the interviewer's voice."
+
+dmg:
+  contents:
+    - x: 140
+      y: 180
+    - x: 400
+      y: 180
+      type: link
+      path: /Applications
+
+win:
+  target:
+    - target: nsis
+      arch:
+        - x64
+        - arm64
+    - target: portable
+      arch:
+        - x64
+  icon: resources/icon.png
+  requestedExecutionLevel: asInvoker
+
+nsis:
+  oneClick: false
+  allowToChangeInstallationDirectory: true
+  createDesktopShortcut: always
+  createStartMenuShortcut: true
+  shortcutName: Specter AI Copilot
+
+linux:
+  target:
+    - AppImage
+    - deb
+  maintainer: WhoisMonesh
+  category: Development
+  icon: resources/icon.png

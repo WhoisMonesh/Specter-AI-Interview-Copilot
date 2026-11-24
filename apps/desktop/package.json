@@ -1,0 +1,30 @@
+{
+  "name": "specter-ai-copilot",
+  "version": "5.0.0",
+  "description": "Cross-Platform Stealth AI Interview Copilot for macOS, Windows, and Linux",
+  "main": "dist/main/index.js",
+  "author": "WhoisMonesh",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/WhoisMonesh/Specter-AI-Interview-Copilot.git"
+  },
+  "scripts": {
+    "dev": "node scripts/dev.js",
+    "build": "node scripts/build.js",
+    "build:mac": "electron-builder --mac",
+    "build:win": "electron-builder --win",
+    "build:linux": "electron-builder --linux",
+    "start": "electron dist/main/index.js"
+  },
+  "dependencies": {
+    "electron-store": "^8.2.0",
+    "tesseract.js": "^7.0.0"
+  },
+  "devDependencies": {
+    "electron": "^33.2.0",
+    "electron-builder": "^25.1.8",
+    "typescript": "^5.6.3",
+    "vite": "^5.4.11"
+  }
+}
