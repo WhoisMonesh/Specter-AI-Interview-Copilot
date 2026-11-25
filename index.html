@@ -26,7 +26,8 @@
         <a href="#how-it-works">How It Works</a>
         <a href="#shortcuts">Shortcuts</a>
         <a href="#compare">Compare</a>
-        <a href="#pricing">Pricing</a>
+        <a href="#byom">BYOM / Models</a>
+        <a href="releases.html" style="color:var(--accent-cyan);font-weight:600;">Releases</a>
         <a href="#download" class="btn btn-nav">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 4v12m-6-6l6 6 6-6M4 20h16"/></svg>
           Download Free
@@ -202,10 +203,10 @@ def twoSum(nums: list[int], target: int) -> list[int]:
             <li>AppKit <code>NSWindowSharingNone</code> screen protection</li>
           </ul>
           <div class="dl-button-group">
-            <a href="https://github.com/WhoisMonesh/Specter-AI-Interview-Copilot/releases/download/v5.0.0/Specter-AI-Copilot-5.0.0-arm64.dmg" class="btn btn-primary btn-block">Download for Apple Silicon (.dmg)</a>
-            <a href="https://github.com/WhoisMonesh/Specter-AI-Interview-Copilot/releases/download/v5.0.0/Specter-AI-Copilot-5.0.0-x64.dmg" class="btn btn-outline btn-block">Download for Intel Mac (.dmg)</a>
+            <a href="https://github.com/WhoisMonesh/Specter-AI-Interview-Copilot/releases/download/v5.0.0/Specter.AI.Copilot-5.0.0-arm64.dmg" class="btn btn-primary btn-block">Download for Apple Silicon (.dmg)</a>
+            <a href="https://github.com/WhoisMonesh/Specter-AI-Interview-Copilot/releases/download/v5.0.0/Specter.AI.Copilot-5.0.0.dmg" class="btn btn-outline btn-block">Download for Intel Mac (.dmg)</a>
           </div>
-          <span class="dl-checksum">SHA-256: Verified Multi-Platform Binary</span>
+          <span class="dl-checksum">SHA-256: <code>cb7c70d0...</code> verified</span>
         </div>
 
         <!-- Windows Card -->
@@ -225,9 +226,9 @@ def twoSum(nums: list[int], target: int) -> list[int]:
           </ul>
           <div class="dl-button-group">
             <a href="https://github.com/WhoisMonesh/Specter-AI-Interview-Copilot/releases/download/v5.0.0/Specter.AI.Copilot.Setup.5.0.0.exe" class="btn btn-primary btn-block">Download Setup (.exe)</a>
-            <a href="https://github.com/WhoisMonesh/Specter-AI-Interview-Copilot/releases/download/v5.0.0/Specter-AI-Copilot-5.0.0.exe" class="btn btn-outline btn-block">Download Portable (.exe)</a>
+            <a href="https://github.com/WhoisMonesh/Specter-AI-Interview-Copilot/releases/download/v5.0.0/Specter.AI.Copilot.5.0.0.exe" class="btn btn-outline btn-block">Download Portable (.exe)</a>
           </div>
-          <span class="dl-checksum">SHA-256: Verified Multi-Platform Binary</span>
+          <span class="dl-checksum">SHA-256: <code>d22468f6...</code> verified</span>
         </div>
 
         <!-- Linux Card -->
@@ -249,8 +250,18 @@ def twoSum(nums: list[int], target: int) -> list[int]:
             <a href="https://github.com/WhoisMonesh/Specter-AI-Interview-Copilot/releases/download/v5.0.0/Specter.AI.Copilot-5.0.0.AppImage" class="btn btn-primary btn-block">Download AppImage</a>
             <a href="https://github.com/WhoisMonesh/Specter-AI-Interview-Copilot/releases/download/v5.0.0/specter-ai-copilot_5.0.0_amd64.deb" class="btn btn-outline btn-block">Download .deb</a>
           </div>
-          <span class="dl-checksum">SHA-256: f4b192ea... verified</span>
+          <span class="dl-checksum">SHA-256: <code>0bb051b2...</code> verified</span>
         </div>
+      </div>
+
+      <!-- Dedicated Release Page Callout -->
+      <div class="web-sandbox-banner" style="margin-top:20px;border-color:rgba(0,242,254,0.3);background:linear-gradient(135deg,rgba(0,242,254,0.06),rgba(155,81,224,0.06));">
+        <div class="sandbox-text">
+          <h4>Looking for SHA-256 Checksums, Changelogs &amp; All Releases?</h4>
+          <p>View verified hashes, installation guides, and complete release notes on our dedicated release page.</p>
+        </div>
+        <a href="releases.html" class="btn btn-primary">Open Releases Page →</a>
+      </div>
       </div>
 
       <!-- Web Practice Sandbox Callout -->
@@ -462,66 +473,63 @@ def twoSum(nums: list[int], target: int) -> list[int]:
     </div>
   </section>
 
-  <!-- Pricing -->
-  <section class="section section-dark" id="pricing">
+  <!-- BYOM / Models Section -->
+  <section class="section section-dark" id="byom">
     <div class="container">
       <div class="section-header">
-        <span class="section-tag">Fair & Transparent</span>
-        <h2>Choose Your Plan</h2>
-        <p>No predatory subscriptions. No hidden usage fees.</p>
+        <span class="section-tag">Pure BYOM / BYOK</span>
+        <h2>Bring Your Own Model — 100% Free &amp; Unlimited</h2>
+        <p>Zero subscriptions, zero cloud limits, and zero paywalls. Plug in your own personal API keys with end-to-end privacy.</p>
       </div>
 
       <div class="pricing-grid">
         <div class="price-card">
           <div class="price-header">
-            <h3>Community / Starter</h3>
-            <p>Free forever with your own API keys</p>
-            <div class="price-val">$0 <span>/ month</span></div>
-            <div style="font-size:13px;color:#10b981;font-weight:600;margin-top:2px;">₹0 / month</div>
+            <h3>Google Gemini</h3>
+            <p>Recommended • Multimodal Vision &amp; Fast Audio</p>
+            <div class="price-val">Free Tier <span>Available</span></div>
+            <div style="font-size:13px;color:#10b981;font-weight:600;margin-top:2px;">~250ms Sub-Second Latency</div>
           </div>
           <ul class="price-features">
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#00e676" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Full access to desktop app on macOS, Windows & Linux</li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#00e676" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Real-time audio loopback transcription</li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#00e676" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Fullscreen & Region screen analysis</li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#00e676" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> BYOK support (Groq, Gemini, OpenAI, Claude)</li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#00e676" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Resume profile & STAR answer mode</li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#00e676" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> 100% on-device stealth & privacy</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#00e676" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Models: <code>gemini-2.5-flash</code>, <code>gemini-2.5-pro</code></li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#00e676" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Direct vision OCR for screen &amp; region capture</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#00e676" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Free API key at aistudio.google.com</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#00e676" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Unlimited live mock &amp; real problem solving</li>
           </ul>
-          <a href="#download" class="btn btn-outline btn-block">Download Free</a>
+          <a href="https://aistudio.google.com" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-block">Get Free Gemini Key →</a>
         </div>
 
         <div class="price-card price-highlight">
-          <div class="price-badge">Most Popular</div>
+          <div class="price-badge">Ultra-Fast LPU</div>
           <div class="price-header">
-            <h3>Pro Monthly</h3>
-            <p>Unlimited live interview & technical coding copilot</p>
-            <div class="price-val">$19 <span>/ month</span></div>
-            <div style="font-size:13px;color:#10b981;font-weight:700;margin-top:2px;">₹1,599 / month</div>
+            <h3>Groq Cloud</h3>
+            <p>Blazing Fast Open-Source DSA Inference</p>
+            <div class="price-val">Free Tier <span>Available</span></div>
+            <div style="font-size:13px;color:#10b981;font-weight:700;margin-top:2px;">~180ms Ultra-Low Latency</div>
           </div>
           <ul class="price-features">
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#00e676" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Everything in Starter / BYOK</li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#00e676" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Google Gemini 2.5 Flash Cloud Key Included</li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#00e676" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Instant Stripe Checkout (Cards, Apple Pay, UPI)</li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#00e676" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Unlimited live mock & real interview sessions</li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#00e676" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Priority sub-200ms answer streaming</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#00e676" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Models: <code>llama-3.3-70b-specdec</code>, <code>mixtral-8x7b</code></li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#00e676" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Answers streamed before the interviewer finishes speaking</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#00e676" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Free developer tier at console.groq.com</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#00e676" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Sub-second Whisper STT audio transcription</li>
           </ul>
-          <a href="#download" class="btn btn-primary btn-block">Get Pro Pass</a>
+          <a href="https://console.groq.com" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-block">Get Free Groq Key →</a>
         </div>
 
         <div class="price-card">
           <div class="price-header">
-            <h3>Lifetime Access</h3>
-            <p>One-time payment for career-long interview dominance</p>
-            <div class="price-val">$99 <span>one-time</span></div>
-            <div style="font-size:13px;color:#10b981;font-weight:700;margin-top:2px;">₹7,999 one-time</div>
+            <h3>OpenAI, Claude &amp; More</h3>
+            <p>OpenRouter, Anthropic, NVIDIA NIM &amp; Deepgram</p>
+            <div class="price-val">Multi-Model <span>BYOK</span></div>
+            <div style="font-size:13px;color:#10b981;font-weight:700;margin-top:2px;">Full Flexibility &amp; Choice</div>
           </div>
           <ul class="price-features">
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#00e676" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Everything in Pro Monthly forever</li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#00e676" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> No recurring subscription fees</li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#00e676" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Lifetime updates across all future OS releases</li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#00e676" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Dedicated 24/7 technical VIP support</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#00e676" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> OpenAI: <code>gpt-4o</code>, <code>gpt-4o-mini</code>, <code>o1</code></li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#00e676" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Anthropic: <code>claude-3-5-sonnet</code>, <code>haiku</code></li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#00e676" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> OpenRouter: DeepSeek R1, Qwen 2.5, Mistral</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#00e676" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Deepgram: Real-time dual-channel audio loopback</li>
           </ul>
-          <a href="#download" class="btn btn-outline btn-block">Get Lifetime Access</a>
+          <a href="releases.html" class="btn btn-outline btn-block">Download App to Configure →</a>
         </div>
       </div>
     </div>
@@ -543,21 +551,21 @@ def twoSum(nums: list[int], target: int) -> list[int]:
       <div class="footer-links-group">
         <h4>Product</h4>
         <a href="#features">Features</a>
-        <a href="#simulator">Simulator</a>
-        <a href="#download">Downloads</a>
+        <a href="#simulator">Live Demo</a>
+        <a href="releases.html">Releases &amp; Downloads</a>
         <a href="#shortcuts">Keyboard Shortcuts</a>
       </div>
 
       <div class="footer-links-group">
-        <h4>Legal & Privacy</h4>
-        <a href="#">Privacy Policy</a>
-        <a href="#">Terms of Service</a>
-        <a href="#">Security Guarantee</a>
+        <h4>Community &amp; Source</h4>
+        <a href="https://github.com/WhoisMonesh/Specter-AI-Interview-Copilot" target="_blank" rel="noopener noreferrer">GitHub Repository</a>
+        <a href="https://github.com/WhoisMonesh/Specter-AI-Interview-Copilot/releases" target="_blank" rel="noopener noreferrer">All Releases</a>
+        <a href="https://github.com/WhoisMonesh/Specter-AI-Interview-Copilot/issues" target="_blank" rel="noopener noreferrer">Report an Issue</a>
       </div>
     </div>
 
     <div class="container footer-bottom">
-      <p>© 2026 Specter AI. All rights reserved. Intended strictly for interview practice, skills assessment, and educational preparation.</p>
+      <p>© 2026 WhoisMonesh. MIT Licensed. Intended strictly for interview practice, skills assessment, and educational preparation.</p>
     </div>
   </footer>
 
